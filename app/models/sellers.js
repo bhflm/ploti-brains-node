@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Company = sequelize.define(
-    'company',
+  const Seller = sequelize.define(
+    'sellers',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false
     }
   );
-  Company.associate = function(models) {  // eslint-disable-line
-    Company.hasMany(models.campaign);
+  Seller.associate = function(models) {  // eslint-disable-line
+
   };
-  return Company;
+  return Seller;
 };

@@ -23,6 +23,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => { // eslint-disable-line
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('user');
   }
 };

@@ -3,7 +3,7 @@ const SALT_ROUNDS = 10,
   { get } = require('lodash'),
   sessionManager = require('../middlewares/session'),
   errors = require('../errors'),
-  { createCompany, findCompany } = require('../services/companies');
+  { createCompany, findCompany } = require('../services/sellers');
 
 exports.create = (req, res) =>
   bcrypt

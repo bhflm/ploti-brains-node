@@ -1,5 +1,5 @@
-const { company: Company } = require('../models');
+const { seller: Seller } = require('../models');
 
-exports.createCompany = company => Company.create(company);
+exports.createSeller = seller => Seller.create(seller);
 
-exports.findCompany = email => Company.findOne({ where: { email } });
+exports.findSeller = email => Seller.findOne({ where: { email } });

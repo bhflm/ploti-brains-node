@@ -120,10 +120,10 @@
       }
     },
 
-    "/companies": {
+    "/sellers": {
       "post": {
         "tags": [
-          "Companies"
+          "sellers"
         ],
         "summary": "Create new company",
         "parameters": [
@@ -166,7 +166,7 @@
       }
     },
 
-    "/companies/login": {
+    "/sellers/login": {
       "parameters": [
         {
           "name": "email",
@@ -185,7 +185,7 @@
       ],
       "post":{
         "tags": [
-          "Companies"
+          "sellers"
         ],
         "summary": "Log into corresponding company account",
         "responses": {

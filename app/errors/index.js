@@ -4,5 +4,4 @@ const { get } = require('lodash');
 exports.errorInfo = err => get(err, ['errors', '0', 'message']);
 
 // Invalid token
-
 exports.badRequest = res => res.status(400).send({ message: 'bad request' });
