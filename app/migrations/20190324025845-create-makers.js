@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('seller', {
+    return queryInterface.createTable('maker', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,6 +19,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {     // eslint-disable-line
-    return queryInterface.dropTable('seller');
+    return queryInterface.dropTable('maker');
   }
 };

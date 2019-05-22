@@ -3,18 +3,18 @@ const SALT_ROUNDS = 10,
   { get } = require('lodash'),
   sessionManager = require('../middlewares/session'),
   errors = require('../errors'),
-  { createCompany, findCompany } = require('../services/sellers');
+  { createMaker, findMaker } = require('../services/makers');
 
 exports.create = (req, res) =>
   bcrypt
     .hash(req.body.password, SALT_ROUNDS)
     .then(hash => {
-      const newCompany = {
+      const newMaker = {
         name: get(req, ['body', 'name']),
         email: get(req, ['body', 'email']),
         password: hash
       };
-      return createCompany(newCompany).then(() => res.json({}));
+      return createMaker(newMaker).then(() => res.json({}));
     })
     .catch(err => {
       const error = errors.errorInfo(err);
@@ -22,12 +22,12 @@ exports.create = (req, res) =>
     });
 
 exports.logIn = (req, res) => {
-  const companyEmail = get(req, ['body', 'email']);
-  const companyPassword = get(req, ['body', 'password']);
-  return findCompany(companyEmail)
+  const makerEmail = get(req, ['body', 'email']);
+  const makerPassword = get(req, ['body', 'password']);
+  return findMaker(makerEmail)
     .then(credentials => {
       if (credentials) {
-        return bcrypt.compare(companyPassword, credentials.password).then(isValid => {
+        return bcrypt.compare(makerPassword, credentials.password).then(isValid => {
           if (!isValid) return res.status(400).send('Invalid password'); // TODO: Factorear handler de errores
           const auth = sessionManager.encode({ email: credentials.email });
           res.set('authorization', auth);

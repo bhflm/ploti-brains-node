@@ -1,5 +1,5 @@
 {
-  "name": "ploti-nodejs",
+  "name": "mktplace-nodejs",
   "version": "1.0.0",
   "description": "ploti",
   "main": "app.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bhflm/ploti-dev.git"
+    "url": "git+https://github.com/bhflm/mktplace-dev.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bhflm/ploti-dev/issues"
+    "url": "https://github.com/bhflm/mktplace-dev/issues"
   },
-  "homepage": "https://github.com/bhflm/ploti-dev#readme",
+  "homepage": "https://github.com/bhflm/mktplace-dev#readme",
   "dependencies": {
     "babel-eslint": "^10.0.1",
     "basic-auth": "^2.0.1",

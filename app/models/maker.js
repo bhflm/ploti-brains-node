@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Seller = sequelize.define(
-    'sellers',
+  const Maker = sequelize.define(
+    'maker',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -23,11 +23,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       freezeTableName: true,
       underscored: true,
-      timestamps: false
+      timestamps: true,
+      paranoid: true
     }
   );
-  Seller.associate = function(models) {  // eslint-disable-line
+  Maker.associate = function(models) {  // eslint-disable-line
 
   };
-  return Seller;
+  return Maker;
 };

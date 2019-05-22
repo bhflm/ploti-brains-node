@@ -1,11 +1,11 @@
 const express = require('express');
-const logger = require('morgan');
+const logger = require('morgan'); // TODO: replace with pino
 const bodyParser = require('body-parser');
 const Util = require('util');
-const swaggerUi = require('swagger-ui-express');
 const { config, ENVIRONMENT } = require('./config');
 const routes = require('./app/routes');
-const swaggerDocument = require('./swaggerDocument.json');
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerDocument = require('./swaggerDocument.json');
 
 const init = () => {
   // Set up the express app
@@ -18,12 +18,21 @@ const init = () => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
-  //default route
+  //default route for loggin incoming reqs
   app.get('/', (req, res) => {
     console.info(
       `Incoming request: ${Util.inspect(
-        { headers: req.headers, method: req.method, ip: req.ip, ips: req.ips, body: req.body,
-          params: req.params, path: req.path, xhr: req.xhr, query: req.query },
+        {
+          headers: req.headers,
+          method: req.method,
+          ip: req.ip,
+          ips: req.ips,
+          body: req.body,
+          params: req.params,
+          path: req.path,
+          xhr: req.xhr,
+          query: req.query
+        },
         { depth: null }
       )}`
     );
@@ -32,20 +41,19 @@ const init = () => {
   });
 
   //Swagger
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); // TODO
 
   // Require routes into app
   routes.init(app);
-  // app.listen(port);
 
-  console.log('PORT', port);
+
   if (ENVIRONMENT !== 'testing') {
     console.log('ENV:', ENVIRONMENT);
     app.listen(port);
   }
 
   module.exports = app;
-  console.info(`up and running @ port:${port}`); // eslint-disable-line
+  console.info(`🚀 mktplace up and running @ port:${port}`); // eslint-disable-line
 };
 
 init();

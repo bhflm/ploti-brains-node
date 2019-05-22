@@ -22,36 +22,17 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      dni: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      license: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      car: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      plate: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      kilometers: {
-        type: DataTypes.INTEGER,
-        allowNull: true
       }
     },
     {
       freezeTableName: true,
       underscored: true,
-      timestamps: false
+      timestamps: true,
+      paranoid: true
     }
   );
   User.associate = function(models) { // eslint-disable-line
-    User.belongsTo(models.campaign);
+
   };
   return User;
 };
