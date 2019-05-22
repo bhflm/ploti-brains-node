@@ -3,6 +3,8 @@ const authMiddleware = require('./middlewares/auth'),
   makers = require('./controllers/makers');
 
 exports.init = app => {
+  app.get('/getall', [], users.findAll);
+
   app.post('/api/users', [], users.create);
   app.post('/api/users/login', [], users.logIn);
 

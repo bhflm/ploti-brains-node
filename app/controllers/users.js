@@ -3,9 +3,9 @@ const SALT_ROUNDS = 10,
   { get } = require('lodash'),
   errors = require('../errors'),
   session = require('../middlewares/session'),
-  { createUser, findUser } = require('../services/users');
+  { createUser, findUser, findAll } = require('../services/users');
 
-exports.check = (req, res) => res.status(200).send({ message: 'OK' });
+exports.findAll = (req, res) => findAll().then(allUsers => res.status(200).send({ allUsers }));
 
 exports.create = (req, res) => {
   const user = {
