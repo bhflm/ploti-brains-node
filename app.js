@@ -1,18 +1,14 @@
 const express = require('express');
-const logger = require('morgan'); // TODO: replace with pino
 const bodyParser = require('body-parser');
 const Util = require('util');
 const { config, ENVIRONMENT } = require('./config');
+const logger = require('./app/logger');
 const routes = require('./app/routes');
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerDocument = require('./swaggerDocument.json');
 
 const init = () => {
   // Set up the express app
   const app = express();
   const port = config.api.port || 8080;
-  // Log requests to the console.
-  app.use(logger('dev'));
 
   // Parse incoming requests data (https://github.com/expressjs/body-parser)
   app.use(bodyParser.json());
@@ -46,14 +42,13 @@ const init = () => {
   // Require routes into app
   routes.init(app);
 
-
   if (ENVIRONMENT !== 'testing') {
-    console.log('ENV:', ENVIRONMENT);
+    console.info('ENV:', ENVIRONMENT);
     app.listen(port);
   }
 
   module.exports = app;
-  console.info(`🚀 mktplace up and running @ port:${port}`); // eslint-disable-line
+  console.info(`🚀 BRAINS UP N' RUNNIN @ port:${port} 🚀`); // eslint-disable-line
 };
 
 init();

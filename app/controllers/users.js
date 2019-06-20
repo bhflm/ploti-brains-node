@@ -5,8 +5,6 @@ const SALT_ROUNDS = 10,
   session = require('../middlewares/session'),
   { createUser, findUser, findAll } = require('../services/users');
 
-exports.findAll = (req, res) => findAll().then(allUsers => res.status(200).send({ allUsers }));
-
 exports.create = (req, res) => {
   const user = {
     name: get(req, ['body', 'name']),
@@ -29,7 +27,7 @@ exports.logIn = (req, res) => {
     .then(credentials => {
       if (credentials) {
         return bcrypt.compare(userPassword, credentials.password).then(isValid => {
-          if (!isValid) return res.status(400).send('Invalid password'); // TODO: HANDLER BETTER ERRORS
+          if (!isValid) return res.status(400).send('Invalid password');
           const auth = session.encode({ email: credentials.email });
           res.set('authorization', auth);
           res.json(auth);

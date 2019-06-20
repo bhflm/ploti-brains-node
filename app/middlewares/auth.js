@@ -1,4 +1,5 @@
 const { get } = require('lodash'),
+  logger = require('../logger');
   sessionManager = require('./session'),
   usersService = require('../services/users'),
   errors = require('../errors');
@@ -12,7 +13,10 @@ exports.checkAuth = (req, res, next) => {
     .then(u => {
       if (!u) return res.status(401).end();
       req.user = u;
-      next();
+      return next();
     })
-    .catch(err => console.log('err', err));
+    .catch(err => {
+      logger.error(err.message);
+      return next();
+    );
 };
