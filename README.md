@@ -1,2 +1,2 @@
 # ploti-brains-node
-marketplace built with nodejs 
+undisputed ploti's geo-wizard
