@@ -5,7 +5,7 @@ const { get, pickBy } = require('lodash'),
   { parseLoafCoords } = require('../utils/kneader'),
   { bakeLoaf } = require('../services/loafService');
 
-exports.kneadLoaf = (req, res) => {
+exports.knead = (req, res) => {
   const loafArea = parseLoafCoords(req.body.coords);
   const loaf = {
     name: get(req, ['body', 'name']),
