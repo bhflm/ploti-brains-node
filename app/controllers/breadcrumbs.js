@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     position: {
       type: 'Point',
       coordinates: [req.body.long, req.body.lat],
-      crs: { type: 'name', properties: { name: 'EPSG:4326'} }
+      crs: { type: 'name', properties: { name: 'EPSG:4326' } }
     },
     time: moment().format()
   };
