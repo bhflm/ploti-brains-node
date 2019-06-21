@@ -9,7 +9,7 @@ const init = () => {
   // Set up the express app
   const app = express();
   const port = config.api.port || 8080;
-
+  console.log('CONFIG: ', config);
   // Parse incoming requests data (https://github.com/expressjs/body-parser)
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));

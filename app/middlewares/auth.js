@@ -1,5 +1,5 @@
 const { get } = require('lodash'),
-  logger = require('../logger');
+  logger = require('../logger'),
   sessionManager = require('./session'),
   usersService = require('../services/users'),
   errors = require('../errors');
@@ -18,5 +18,5 @@ exports.checkAuth = (req, res, next) => {
     .catch(err => {
       logger.error(err.message);
       return next();
-    );
+    });
 };

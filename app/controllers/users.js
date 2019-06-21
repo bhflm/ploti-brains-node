@@ -1,6 +1,7 @@
 const SALT_ROUNDS = 10,
   bcrypt = require('bcryptjs'),
   { get } = require('lodash'),
+  logger = require('../logger'),
   errors = require('../errors'),
   session = require('../middlewares/session'),
   { createUser, findUser, findAll } = require('../services/users');
@@ -17,7 +18,11 @@ exports.create = (req, res) => {
       const newUser = { ...user, password: hash };
       return createUser(newUser).then(() => res.status(200).end());
     })
-    .catch(err => res.status(400).send(errors.errorInfo(err)));
+    .catch(err => {
+      logger.error(err.message);
+      res.status(err.statusCode);
+      return res.send(err.message);
+    });
 };
 
 exports.logIn = (req, res) => {
@@ -34,5 +39,9 @@ exports.logIn = (req, res) => {
         });
       }
     })
-    .catch(err => res.status(400).send(errors.errorInfo(err)));
+    .catch(err => {
+      logger.error(err.message);
+      res.status(err.statusCode);
+      return res.send(err.message);
+    });
 };
