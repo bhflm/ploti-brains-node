@@ -6,6 +6,6 @@ const authMiddleware = require('./middlewares/auth'),
 exports.init = app => {
   app.post('/api/users', [], users.create);
   app.post('/api/users/login', [], users.logIn);
-  app.post('/admin/bread', [], breadcrumbs.create);
-  app.post('/admin/loaf', [], loafs.knead);
+  app.post('/admin/breadcrumb', [], breadcrumbs.create);
+  app.post('/admin/area', [], loafs.knead);
 };
