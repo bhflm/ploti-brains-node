@@ -14,10 +14,8 @@ exports.create = (req, res) => {
     },
     time: moment().format()
   };
-  console.log('BREADCRUMB: ', breadcrumb);
   return createBreadcrumb(breadcrumb)
     .then(breadRes => {
-      console.log(breadRes);
       return res.json(breadRes);
     })
     .catch(err => {

@@ -9,14 +9,13 @@ const init = () => {
   // Set up the express app
   const app = express();
   const port = config.api.port || 8080;
-  console.log('CONFIG: ', config);
   // Parse incoming requests data (https://github.com/expressjs/body-parser)
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
   //default route for loggin incoming reqs
   app.get('/', (req, res) => {
-    console.info(
+    logger.info(
       `Incoming request: ${Util.inspect(
         {
           headers: req.headers,
@@ -41,7 +40,6 @@ const init = () => {
 
   // Require routes into app
   routes.init(app);
-
   if (ENVIRONMENT !== 'testing') {
     console.info('ENV:', ENVIRONMENT);
     app.listen(port);
