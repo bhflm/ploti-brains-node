@@ -41,6 +41,7 @@
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "pino": "^5.12.6",
+    "pino-pretty": "^3.2.0",
     "sequelize": "^5.1.0",
     "sequelize-cli": "^5.4.0",
     "supertest": "^4.0.2",
@@ -55,7 +56,6 @@
     "install": "^0.12.2",
     "jest": "^24.5.0",
     "npm": "^6.9.0",
-    "pino-pretty": "^3.2.0",
     "prettier": "1.16.4"
   },
   "jest": {
