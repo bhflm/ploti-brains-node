@@ -4,6 +4,8 @@ const { get } = require('lodash'),
   errors = require('../errors'),
   { createBreadcrumb } = require('../services/breadcrumbService');
 
+exports.status = (req, res) => res.status(200).send({ message: 'OK' });
+
 exports.create = (req, res) => {
   const breadcrumb = {
     trackerId: get(req, ['body', 'trackerId']),
