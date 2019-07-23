@@ -1,5 +1,6 @@
 const { get } = require('lodash'),
   moment = require('moment'),
+  Util = require('util'),
   logger = require('../logger'),
   errors = require('../errors'),
   { createBreadcrumb } = require('../services/breadcrumbService');
@@ -7,7 +8,7 @@ const { get } = require('lodash'),
 exports.status = (req, res) => res.status(200).send({ message: 'OK' });
 
 exports.log = (req, res) => {
-  logger.info(`Receiving: ${req.body}`);
+  logger.info(`Receiving: ${Util.inspect(req.body, { depth: null })}`);
   return res.json({ message: 'OK' });
 };
 
