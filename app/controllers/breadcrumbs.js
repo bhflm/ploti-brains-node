@@ -6,6 +6,11 @@ const { get } = require('lodash'),
 
 exports.status = (req, res) => res.status(200).send({ message: 'OK' });
 
+exports.log = (req, res) => {
+  logger.info(`Receiving: ${req.body}`);
+  return res.json({ message: 'OK' });
+};
+
 exports.create = (req, res) => {
   const breadcrumb = {
     trackerId: get(req, ['body', 'trackerId']),
